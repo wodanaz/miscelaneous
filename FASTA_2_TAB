@@ -1,0 +1,43 @@
+
+
+
+nano do_file.sh
+#!/usr/bin/env bash
+#SBATCH --mail-type=END
+#SBATCH --mail-user=alebesc@gmail.com
+#SBATCH -N 1
+#SBATCH --mem-per-cpu=500
+for filename in `cat all.list`; do
+root=`basename $filename .fa`;
+awk 'BEGIN{RS=">"}{print $1"\t"$2;}' $filename > $root.tab ;
+done
+
+
+
+
+for file in *fa.tab; do echo $file >> tab.log; done;
+
+hg19	CAGCCAGGTCTTAATGACCCTGCTGCCAGGGACCTGCCATCCACTCCTGGCTGCCCGTGTCCAAGATGTC
+panTro4	CAGCCAGGTCTTAATGACACTGCTGCCAGGGACCTGCCATCCACTCCTGGCTGCCCATGTCCAAGATGTC
+ponAbe2	CAGCCAGGTCTTAACGACCCCGCTGCCAGGGACCTGCCATCCACTCCTGGCCACCCATGTCCAAGATGTC
+rheMac3	CAGCCAGGTCTTAATGACCCTGCTGCCAGGGACCTGCCATCCACTCCTGGCCGCCCATGTCCAAGATGTC
+gorGor3	CAGCCAGGTCTTACTGACCCTGCTGCCAGGGACCTGCCATCCACTCCTGGCTGCCCATGTCCAAGATGTC
+
+
+
+for filename in `cat tab.log`; do grep -H "hg19" $filename >> hg19.fibroseq.tab; done;
+awk -F"." '{ print $1 "\t" $2 "\t" $3  }' hg19.fibroseq.tab  | awk -F"-" '{ print $1 "\t" $2  }'  |  awk '{ print $1 "\t" $2 "\t" $3 "\t" $5 }' >  hg19_fibroseq.tab
+
+for filename in `cat tab.log`; do grep -H "panTro4" $filename >> panTro4.fibroseq.tab; done;
+awk -F"." '{ print $1 "\t" $2 "\t" $3  }' panTro4.fibroseq.tab  | awk -F"-" '{ print $1 "\t" $2  }'  |  awk '{ print $1 "\t" $2 "\t" $3 "\t" $5 }' >  panTro4_fibroseq.tab
+
+for filename in `cat tab.log`; do grep -H "gorGor3" $filename >> gorGor3.fibroseq.tab; done;
+awk -F"." '{ print $1 "\t" $2 "\t" $3  }' gorGor3.fibroseq.tab  | awk -F"-" '{ print $1 "\t" $2  }'  |  awk '{ print $1 "\t" $2 "\t" $3 "\t" $5 }' >  gorGor3_fibroseq.tab
+
+for filename in `cat tab.log`; do grep -H "ponAbe2" $filename >> ponAbe2.fibroseq.tab; done;
+awk -F"." '{ print $1 "\t" $2 "\t" $3  }' ponAbe2.fibroseq.tab  | awk -F"-" '{ print $1 "\t" $2  }'  |  awk '{ print $1 "\t" $2 "\t" $3 "\t" $5 }' >  ponAbe2_fibroseq.tab
+
+for filename in `cat tab.log`; do grep -H "rheMac3" $filename >> rheMac3.fibroseq.tab; done;
+awk -F"." '{ print $1 "\t" $2 "\t" $3  }' rheMac3.fibroseq.tab  | awk -F"-" '{ print $1 "\t" $2  }'  |  awk '{ print $1 "\t" $2 "\t" $3 "\t" $5 }' >  rheMac3_fibroseq.tab
+
+
