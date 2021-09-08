@@ -59,8 +59,8 @@ final set up:
 
 ```bash
 module load Anaconda3
-conda env create --file environment.yml #--prefix /data/wraycompute/alejo/aleconda/singlecell
-conda activate /data/yourlab/alejo/aleconda/
+conda env create --file environment.yml #--prefix /data/yourlab/conda/aleconda
+conda activate /data/yourlab/conda/aleconda/
 
 ```
 
