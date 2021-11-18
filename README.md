@@ -72,5 +72,10 @@ conda env update -f environment.yml --prune
 ```
 
 
+To remove a keygen for hardac
+
+```bash
+  ssh-keygen -f "/home/alejo/.ssh/known_hosts" -R "hardac-login.genome.duke.edu"
+```
 
 
