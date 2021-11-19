@@ -78,4 +78,10 @@ To remove a keygen for hardac
   ssh-keygen -f "/home/alejo/.ssh/known_hosts" -R "hardac-login.genome.duke.edu"
 ```
 
+To update / reclone (?) a repository when github is problematic
 
+```bash
+
+git remote set-url origin git@github.com:wodanaz/Assembling_viruses.git
+
+```
