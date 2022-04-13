@@ -94,5 +94,12 @@ cp Lvar.braker.gene.gtf Lvar.braker.gene2.gtf
 for i in `cat jg2spu2.tab`; do 
   root1=`echo ${i} | cut -d'$' -f 1`;  
    root2=`echo ${i} | cut -d'$' -f 2`; 
-   sed -ri "s@${root1}@${root2}@g"  Lvar.braker.gene2.gtf ;   done
+   sed -ri "s@${root1}@${root2}@g"  Lvar.braker.gene2.gtf ;   
+done
+
+#to edit the attribute Name to gene_name
+
+sed -ri "s/Name/gene_name/g"  Lvar.braker.gene2.gtf
+
+
 ```
