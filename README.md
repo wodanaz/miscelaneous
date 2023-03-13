@@ -1,10 +1,12 @@
 # miscelaneous
 here I post scripts (not necessarily optimal) but do the work 
 
+Sed in-place solution without needing to type the special character (you can copy this and it works):
+```bash
+sed -i -e "s/\r//g" filename
+```
 
 To mount a shared folder in Desktop Ubuntu Guest
-
-
 
 ```bash
 
